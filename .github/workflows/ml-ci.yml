@@ -41,7 +41,7 @@ jobs:
       - name: Run automated ML tests
         run: python -m unittest discover -v
 
-       - name: Upload validated ML artifacts
+              - name: Upload validated ML artifacts
         uses: actions/upload-artifact@v4
         with:
           name: student-result-ml-artifacts
@@ -51,3 +51,4 @@ jobs:
             student_results.csv
           if-no-files-found: error
           retention-days: 7
+
