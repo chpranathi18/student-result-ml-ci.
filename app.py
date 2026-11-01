@@ -32,12 +32,21 @@ def health_check():
     })
 
 
+@app.get("/health")
+def health():
+    return jsonify({
+        "status": "healthy"
+    }), 200
+
+
 @app.post("/predict")
 def predict():
     data = request.get_json(silent=True)
 
     if not data:
-        return jsonify({"error": "JSON request body is required"}), 400
+        return jsonify({
+            "error": "JSON request body is required"
+        }), 400
 
     missing_fields = [
         feature for feature in FEATURES
